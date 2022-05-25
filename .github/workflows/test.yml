@@ -1,0 +1,13 @@
+name: "Test"
+on:
+  pull_request:
+  schedule:
+    - cron:  '51 2 * * *'
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: cachix/install-nix-action@v17
+    - name: Build
+      run: nix-build
