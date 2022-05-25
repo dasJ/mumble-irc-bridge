@@ -110,6 +110,7 @@ func handleIRC(mumbleMsgChan chan string, ircMsgChan chan string) {
 
 		// Generate HTML if necessary
 		msg := e.Last()
+		msg = html.EscapeString(msg)
 		re := regexp.MustCompile(`(https?://[^\s]+)`)
 		msg = re.ReplaceAllString(msg, "<a href=\"$1\">$1</a>")
 		if msg == "" {
