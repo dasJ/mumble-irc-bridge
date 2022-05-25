@@ -104,7 +104,7 @@ func handleIRC(mumbleMsgChan chan string, ircMsgChan chan string) {
 		if user == IRC_NICK {
 			return
 		}
-		if relayedNick, ok := e.Tags.Get("draft/relaymsg"); ok && relayedNick == IRC_NICK {
+		if _, ok := e.Tags.Get("draft/relaymsg"); ok {
 			return
 		}
 
@@ -138,7 +138,7 @@ func handleIRC(mumbleMsgChan chan string, ircMsgChan chan string) {
 
 	for {
 		msg := <-mumbleMsgChan
-		client.Cmd.Message(IRC_CHANNEL, girc.TrimFmt(msg))
+		client.Cmd.Notice(IRC_CHANNEL, girc.TrimFmt(msg))
 	}
 }
 
