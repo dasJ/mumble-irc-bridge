@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"html"
 	"log"
 	"regexp"
+	"strings"
 	"time"
 
 	"github.com/lrstanley/girc"
@@ -32,6 +34,13 @@ func handleMumble(mumbleMsgChan chan string, ircMsgChan chan string) {
 		TextMessage: func(e *gumble.TextMessageEvent) {
 			msg := blue.Sanitize(e.Message)
 			if msg == "" {
+				return
+			}
+			msg = html.UnescapeString(msg)
+			if msg == "" {
+				return
+			}
+			if strings.HasPrefix(msg, " ") {
 				return
 			}
 			mumbleMsgChan <- fmt.Sprintf("[%s] %s\n", e.Sender.Name, msg)
@@ -104,6 +113,9 @@ func handleIRC(mumbleMsgChan chan string, ircMsgChan chan string) {
 		re := regexp.MustCompile(`(https?://[^\s]+)`)
 		msg = re.ReplaceAllString(msg, "<a href=\"$1\">$1</a>")
 		if msg == "" {
+			return
+		}
+		if strings.HasPrefix(msg, " ") {
 			return
 		}
 
