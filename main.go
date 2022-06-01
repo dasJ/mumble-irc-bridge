@@ -33,6 +33,9 @@ func handleMumble(mumbleMsgChan chan string, ircMsgChan chan string) {
 	config.Attach(gumbleutil.Listener{
 		TextMessage: func(e *gumble.TextMessageEvent) {
 			msg := blue.Sanitize(e.Message)
+			if e.Sender == nil {
+				return
+			}
 			if msg == "" {
 				return
 			}
