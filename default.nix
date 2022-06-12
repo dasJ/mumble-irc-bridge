@@ -2,6 +2,6 @@ with import <nixpkgs> {};
 pkgs.buildGoModule {
   name = "mumble-irc-bridge";
   src = ./.;
-  vendorSha256 = "sha256-AwJbfWoK8vUvzLF9+zS4rBZ6K9sdSBCqcfKpWDNlwPs=";
+  vendorSha256 = "sha256-Ptettm3Z6VSjuatD56dVU9Gvg0liIx1v3PFrL3oOiwc=";
   proxyVendor = true;
 }
