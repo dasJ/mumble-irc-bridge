@@ -56,7 +56,8 @@ func handleMumble(mumbleMsgChan chan string, ircMsgChan chan string) {
 		fmt.Printf("Connecting to %s...\n", MUMBLE_SERVER)
 		client, err := gumble.Dial(MUMBLE_SERVER, config)
 		if err != nil {
-			panic(err)
+			fmt.Printf("%v\n", err)
+			continue
 		}
 		channel := client.Channels.Find(MUMBLE_CHANNEL)
 		if channel == nil {
