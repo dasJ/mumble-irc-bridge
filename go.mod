@@ -6,7 +6,7 @@ require (
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/lrstanley/girc v0.0.0-20220821023908-8e7df6d970f8
 	github.com/microcosm-cc/bluemonday v1.0.19
-	golang.org/x/net v0.0.0-20220822230855-b0a4917ee28c // indirect
+	golang.org/x/net v0.7.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	layeh.com/gopus v0.0.0-20210501142526-1ee02d434e32 // indirect
 	layeh.com/gumble v0.0.0-20200818122324-146f9205029b
